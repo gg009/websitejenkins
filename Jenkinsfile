@@ -4,7 +4,7 @@ pipeline {
     environment {
         registryCredential = 'ecr:us-west-1:0a766873-8762-4970-a8ca-887e2a7dc84c'   // AWS ECR Credentials ID
         appRegistry = "samplerepototest"                              // ECR Repository Name
-        capstoneRegistry = "739275458037.dkr.ecr.us-west-1.amazonaws.com/samplerepototest" // ECR Registry URL
+        capstoneRegistry = "https://739275458037.dkr.ecr.us-west-1.amazonaws.com/samplerepototest" // ECR Registry URL with HTTPS
         cluster = "sampleclustertotestjenkins"                        // ECS Cluster Name
         service = "sampletestsvc"                                     // ECS Service Name
     }
@@ -48,7 +48,12 @@ pipeline {
             }
             steps {
                 withAWS(credentials: '0a766873-8762-4970-a8ca-887e2a7dc84c', region: 'us-west-1') {  // AWS Credentials ID for ECS
-                    sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
+                    sh """
+                    aws ecs update-service \
+                        --cluster ${cluster} \
+                        --service ${service} \
+                        --force-new-deployment
+                    """
                 }
             }
         }
