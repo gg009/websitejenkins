@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        registryCredential = 'ecr:us-west-1:aws-credentials-id'   // AWS ECR Credentials ID
+        registryCredential = 'ecr:us-west-1:0a766873-8762-4970-a8ca-887e2a7dc84c'   // AWS ECR Credentials ID
         appRegistry = "samplerepototest"                              // ECR Repository Name
         capstoneRegistry = "739275458037.dkr.ecr.us-west-1.amazonaws.com/samplerepototest" // ECR Registry URL
         cluster = "sampleclustertotestjenkins"                        // ECS Cluster Name
