@@ -47,7 +47,7 @@ pipeline {
                 branch "master"  // Only deploy when on the master branch
             }
             steps {
-                withAWS(credentials: 'aws-credentials-id', region: 'us-west-1') {  // AWS Credentials ID for ECS
+                withAWS(credentials: '0a766873-8762-4970-a8ca-887e2a7dc84c', region: 'us-west-1') {  // AWS Credentials ID for ECS
                     sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
                 }
             }
